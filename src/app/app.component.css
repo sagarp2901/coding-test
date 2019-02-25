@@ -1,0 +1,35 @@
+.parent-grid {
+  display: grid;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.grid-item {
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  margin-bottom: 20px;
+  justify-self: center;
+  margin-top: 30px;
+  width: 200px;
+}
+
+h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}

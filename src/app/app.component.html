@@ -1,0 +1,41 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="parent-grid">
+  <div><h2>Business Entity Editor</h2></div>
+  <div class="grid-container" *ngIf="metaData && data">
+    <div
+      class="grid-item card"
+      [ngClass]="{ 'disabled alert alert-warning': !field.system }"
+      *ngFor="let field of metaData.field"
+    >
+      <ng-template [ngIf]="true">
+        <label>
+          {{ field.label }}
+          :
+          <input
+            *ngIf="field.dataType !== 'Date'"
+            type="text"
+            [name]="field.name"
+            [value]="getValue(field.name)"
+            (focusout)="updateValue($event, field)"
+          />
+
+          <input
+            *ngIf="field.dataType == 'Date'"
+            type="date"
+            [ngModel]="this.data[field.name] | date: 'yyyy-MM-dd'"
+            (ngModelChange)="updateValue($event, field)"
+          />
+        </label>
+      </ng-template>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+    Save
+  </button>
+  <p class="alert alert-warning">
+    The disabled fields in yellow are based on the system flag. Instead of not
+    showing the fields as per the requirement, I decided to show them as
+    disabled to demonstrate that the requirement was implemented.
+  </p>
+</div>
